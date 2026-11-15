@@ -7,10 +7,15 @@ use App\Models\BusinessProfileView;
 use App\Models\BusinessReport;
 use App\Models\Review;
 use App\Models\User;
+use App\Notifications\BusinessProfileApproved;
+use App\Notifications\BusinessProfileRejected;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Throwable;
 
 class AdminDashboardController extends Controller
 {
@@ -96,6 +101,8 @@ class AdminDashboardController extends Controller
             'rejection_reason' => null,
         ])->save();
 
+        $this->notifyOwner($businessProfile, new BusinessProfileApproved($businessProfile));
+
         return redirect()
             ->route('admin.profiles.show', $businessProfile)
             ->with('status', 'The business profile has been approved.');
@@ -115,8 +122,26 @@ class AdminDashboardController extends Controller
             'rejection_reason' => $validated['rejection_reason'],
         ])->save();
 
+        $this->notifyOwner($businessProfile, new BusinessProfileRejected($businessProfile));
+
         return redirect()
             ->route('admin.profiles.show', $businessProfile)
             ->with('status', 'The business profile has been rejected.');
+    }
+
+    /**
+     * Email the business owner about the decision. A mail problem must never
+     * undo or block the administrator's decision, so failures are only logged.
+     */
+    private function notifyOwner(BusinessProfile $businessProfile, Notification $notification): void
+    {
+        try {
+            $businessProfile->owner?->notify($notification);
+        } catch (Throwable $exception) {
+            Log::warning('Business profile decision email failed.', [
+                'business_profile_id' => $businessProfile->id,
+                'exception_class' => $exception::class,
+            ]);
+        }
     }
 }
