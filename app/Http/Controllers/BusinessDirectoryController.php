@@ -20,6 +20,7 @@ class BusinessDirectoryController extends Controller
     {
         $filters = $request->validate([
             'search' => ['nullable', 'string', 'max:100'],
+            'item_type' => ['nullable', Rule::in(['product', 'service'])],
             'category_id' => [
                 'nullable',
                 'integer',
@@ -37,20 +38,53 @@ class BusinessDirectoryController extends Controller
             ],
         ]);
 
+        $terms = $this->searchTerms($filters['search'] ?? null);
+        $itemType = $filters['item_type'] ?? null;
+
         $businessProfiles = BusinessProfile::query()
             ->where('status', 'approved')
             ->with([
                 'category:id,name',
                 'town:id,name,local_government_area_id',
                 'town.localGovernmentArea:id,name',
+                // The products and services that matched, shown on each result card.
+                'products' => function ($products) use ($terms, $itemType): void {
+                    $products->where('is_available', true)
+                        ->when($itemType !== null, fn ($query) => $query->where('item_type', $itemType))
+                        ->when($terms !== [], fn ($query) => $query->where(
+                            fn ($match) => $this->matchProductText($match, $terms)
+                        ))
+                        ->orderBy('name');
+                },
             ])
             ->when(
-                filled($filters['search'] ?? null),
-                function (Builder $query) use ($filters): void {
-                    $search = mb_strtolower(trim($filters['search']));
+                $terms !== [],
+                function (Builder $query) use ($terms): void {
+                    // Every typed word must match the business, its category,
+                    // its town, or one of its available products/services.
+                    foreach ($terms as $term) {
+                        $like = '%'.$this->escapeLike($term).'%';
 
-                    $query->whereRaw('LOWER(business_name) LIKE ?', ['%'.$search.'%']);
+                        $query->where(function (Builder $match) use ($like): void {
+                            $match->whereRaw("LOWER(business_profiles.business_name) LIKE ? ESCAPE '\\'", [$like])
+                                ->orWhereRaw("LOWER(business_profiles.description) LIKE ? ESCAPE '\\'", [$like])
+                                ->orWhereHas('category', fn (Builder $category) => $category
+                                    ->whereRaw("LOWER(name) LIKE ? ESCAPE '\\'", [$like]))
+                                ->orWhereHas('town', fn (Builder $town) => $town
+                                    ->whereRaw("LOWER(name) LIKE ? ESCAPE '\\'", [$like]))
+                                ->orWhereHas('products', fn (Builder $product) => $product
+                                    ->where('is_available', true)
+                                    ->where(fn (Builder $text) => $this->matchProductText($text, [$like], true)));
+                        });
+                    }
                 }
+            )
+            ->when(
+                $itemType !== null,
+                fn (Builder $query) => $query->whereHas(
+                    'products',
+                    fn (Builder $product) => $product->where('is_available', true)->where('item_type', $itemType)
+                )
             )
             ->when(
                 isset($filters['category_id']),
@@ -75,6 +109,7 @@ class BusinessDirectoryController extends Controller
         return view('business-directory.index', [
             'businessProfiles' => $businessProfiles,
             'hasActiveFilters' => filled($filters['search'] ?? null)
+                || isset($filters['item_type'])
                 || isset($filters['category_id'])
                 || isset($filters['local_government_area_id'])
                 || isset($filters['town_id']),
@@ -89,6 +124,40 @@ class BusinessDirectoryController extends Controller
                 ->get(['id', 'name', 'local_government_area_id']),
             'filters' => $filters,
         ]);
+    }
+
+    /**
+     * Split the typed search into lowercase words (maximum six).
+     *
+     * @return list<string>
+     */
+    private function searchTerms(?string $search): array
+    {
+        $words = preg_split('/\s+/u', mb_strtolower(trim((string) $search)), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+
+        return array_slice($words, 0, 6);
+    }
+
+    /** Stop a typed % or _ from acting as a wildcard. */
+    private function escapeLike(string $value): string
+    {
+        return addcslashes($value, '%_\\');
+    }
+
+    /**
+     * Match product/service name or description against the given words.
+     * With $alreadyLike = true the values are ready-made LIKE patterns.
+     *
+     * @param  list<string>  $terms
+     */
+    private function matchProductText(mixed $query, array $terms, bool $alreadyLike = false): void
+    {
+        foreach ($terms as $term) {
+            $like = $alreadyLike ? $term : '%'.$this->escapeLike($term).'%';
+
+            $query->orWhereRaw("LOWER(products.name) LIKE ? ESCAPE '\\'", [$like])
+                ->orWhereRaw("LOWER(products.description) LIKE ? ESCAPE '\\'", [$like]);
+        }
     }
 
     public function show(Request $request, int $businessProfile): View

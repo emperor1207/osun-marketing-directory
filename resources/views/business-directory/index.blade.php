@@ -17,8 +17,17 @@
 
         <form method="GET" action="{{ route('directory.index') }}" class="grid gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-6 md:grid-cols-2 lg:grid-cols-4" data-directory-filter-form>
             <div class="md:col-span-2 lg:col-span-4">
-                <label for="directory-search" class="mb-2 block text-sm font-medium text-zinc-800 dark:text-zinc-200">Search by business name</label>
-                <input id="directory-search" name="search" type="search" maxlength="100" value="{{ $filters['search'] ?? '' }}" placeholder="For example, Osogbo Bakery" class="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-500 focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white">
+                <label for="directory-search" class="mb-2 block text-sm font-medium text-zinc-800 dark:text-zinc-200">Search businesses, products or services</label>
+                <input id="directory-search" name="search" type="search" maxlength="100" value="{{ $filters['search'] ?? '' }}" placeholder="For example: bread, hair braiding, laptop repair" class="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-500 focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white">
+            </div>
+
+            <div>
+                <label for="directory-item-type" class="mb-2 block text-sm font-medium text-zinc-800 dark:text-zinc-200">Looking for</label>
+                <select id="directory-item-type" name="item_type" class="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white">
+                    <option value="">Products and services</option>
+                    <option value="product" @selected(($filters['item_type'] ?? '') === 'product')>Products only</option>
+                    <option value="service" @selected(($filters['item_type'] ?? '') === 'service')>Services only</option>
+                </select>
             </div>
 
             <div>
@@ -51,7 +60,7 @@
                 </select>
             </div>
 
-            <div class="flex flex-col gap-3 sm:flex-row sm:items-end">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-end md:col-span-2 lg:col-span-4">
                 <button type="submit" class="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-800 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">Apply filters</button>
                 <a href="{{ route('directory.index') }}" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-zinc-300 px-5 py-2.5 text-sm font-medium text-zinc-700 transition hover:border-emerald-400 hover:bg-emerald-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-800">Clear</a>
             </div>
@@ -103,6 +112,25 @@
                                     <p class="text-sm leading-6 text-zinc-700 dark:text-zinc-300">{{ \Illuminate\Support\Str::limit(strip_tags($businessProfile->description), 140) }}</p>
                                 @else
                                     <p class="text-sm leading-6 text-zinc-500 dark:text-zinc-400">Contact this business to learn more about its services.</p>
+                                @endif
+
+                                @if ($businessProfile->products->isNotEmpty() && (filled($filters['search'] ?? null) || filled($filters['item_type'] ?? null)))
+                                    <div class="rounded-xl bg-emerald-50 p-3 dark:bg-emerald-950/40">
+                                        <p class="text-xs font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">Matching products &amp; services</p>
+                                        <ul class="mt-2 flex flex-col gap-1 text-sm text-zinc-800 dark:text-zinc-200">
+                                            @foreach ($businessProfile->products->take(3) as $item)
+                                                <li class="flex items-baseline justify-between gap-3">
+                                                    <span class="min-w-0 truncate">{{ $item->name }} <span class="text-xs text-zinc-500 dark:text-zinc-400">({{ $item->item_type }})</span></span>
+                                                    @if ($item->price > 0)
+                                                        <span class="shrink-0 font-medium">₦{{ number_format($item->price) }}</span>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        @if ($businessProfile->products->count() > 3)
+                                            <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">+ {{ $businessProfile->products->count() - 3 }} more on the business page</p>
+                                        @endif
+                                    </div>
                                 @endif
 
                                 <div class="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">

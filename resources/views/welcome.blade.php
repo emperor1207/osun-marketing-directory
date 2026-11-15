@@ -105,16 +105,16 @@
                 <div class="flex flex-col gap-3">
                     <p class="text-sm font-semibold uppercase tracking-[0.16em] text-emerald-800">Search the directory</p>
                     <h2 id="homepage-search-heading" class="text-3xl font-bold tracking-tight text-emerald-950">Who are you looking for?</h2>
-                    <p class="leading-7 text-zinc-600">Search by business name, then refine your results by category and location.</p>
+                    <p class="leading-7 text-zinc-600">Search for a product, a service or a business name, then refine your results by category and location.</p>
                 </div>
                 <form method="GET" action="{{ route('directory.index') }}" class="flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white p-4 shadow-lg shadow-emerald-950/5 sm:flex-row sm:items-center sm:p-5">
-                    <label for="homepage-search" class="sr-only">Business name</label>
+                    <label for="homepage-search" class="sr-only">Business, product or service</label>
                     <input
                         id="homepage-search"
                         name="search"
                         type="search"
                         maxlength="100"
-                        placeholder="Try a business name, such as a bakery"
+                        placeholder="Try a product or service, such as bread or tailoring"
                         class="min-h-12 w-full rounded-xl border border-zinc-300 bg-stone-50 px-4 text-zinc-900 outline-none transition placeholder:text-zinc-500 focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/20"
                     >
                     <button type="submit" class="min-h-12 shrink-0 rounded-xl bg-emerald-800 px-6 font-semibold text-white transition hover:bg-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">
