@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="icon-title">
+    <title id="icon-title">Osun Marketing Directory location and marketplace mark</title>
+    <path fill="#123D2E" d="M64 5C37.5 5 16 26.5 16 53c0 29.8 31.7 59.4 44.6 70.7a5.2 5.2 0 0 0 6.8 0C80.3 112.4 112 82.8 112 53 112 26.5 90.5 5 64 5Z"/>
+    <circle cx="64" cy="52" r="34" fill="#FFFDF8"/>
+    <path fill="#D8A62A" d="m38 49 7-15h38l7 15v7H38v-7Z"/>
+    <path fill="#FFFDF8" d="M49 35h5v17h-5zm14 0h5v17h-5zm14 0h5v17h-5z"/>
+    <path fill="#FFFDF8" stroke="#123D2E" stroke-linejoin="round" stroke-width="4" d="M43 53h42v31H43z"/>
+    <path fill="#D8A62A" d="M48 62h9v9h-9z"/>
+    <path fill="#123D2E" d="M62 84V70a6 6 0 0 1 12 0v14h-5V70a1 1 0 0 0-2 0v14h-5Z"/>
+    <path fill="#D8A62A" d="M76 62h5v5h-5z"/>
+    <path fill="#123D2E" d="M43 82h42v4H43z"/>
+</svg>
