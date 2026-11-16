@@ -31,6 +31,22 @@
                     </div>
                 </header>
 
+                <div class="flex flex-wrap gap-3" role="group" aria-label="Contact {{ $businessProfile->business_name }}">
+                    @if ($phoneUrl)
+                        <a href="{{ $phoneUrl }}" class="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-800 px-5 text-sm font-semibold text-white transition hover:bg-emerald-900">Call now</a>
+                    @endif
+                    @if ($whatsappUrl)
+                        <a href="{{ $whatsappUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center justify-center rounded-xl bg-green-600 px-5 text-sm font-semibold text-white transition hover:bg-green-700">Chat on WhatsApp</a>
+                    @endif
+                    <a href="{{ $directionsUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-zinc-300 px-5 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800">Get directions</a>
+                    @if (auth()->id() !== $businessProfile->user_id)
+                        <form method="POST" action="{{ route('favourites.toggle', $businessProfile) }}">
+                            @csrf
+                            <button type="submit" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-rose-200 px-5 text-sm font-semibold text-rose-700 transition hover:bg-rose-50 dark:border-rose-900 dark:text-rose-300 dark:hover:bg-rose-950/40">{{ $isFavourite ? '♥ Saved' : '♡ Save' }}</button>
+                        </form>
+                    @endif
+                </div>
+
                 @if ($businessProfile->description)
                     <section class="flex flex-col gap-3" aria-labelledby="business-description-heading">
                         <h2 id="business-description-heading" class="text-xl font-semibold text-zinc-900 dark:text-white">About this business</h2>
@@ -76,6 +92,13 @@
                             </div>
                         @endif
                     </dl>
+
+                    @if ($mapEmbedUrl)
+                        <div class="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700">
+                            <iframe src="{{ $mapEmbedUrl }}" title="Map showing {{ $businessProfile->business_name }}" class="h-64 w-full sm:h-80" loading="lazy" referrerpolicy="no-referrer"></iframe>
+                        </div>
+                        <a href="{{ $mapUrl }}" target="_blank" rel="noopener noreferrer" class="w-fit text-sm font-semibold text-green-800 underline dark:text-green-300">View larger map</a>
+                    @endif
                 </section>
             </div>
         </article>

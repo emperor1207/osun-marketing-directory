@@ -62,6 +62,9 @@
                         <flux:sidebar.item icon="flag" :href="route('business-reports.mine')" :current="request()->routeIs('business-reports.mine')" wire:navigate>
                             {{ __('My reports') }}
                         </flux:sidebar.item>
+                        <flux:sidebar.item icon="heart" :href="route('favourites.index')" :current="request()->routeIs('favourites.*')" wire:navigate>
+                            {{ __('Saved businesses') }}
+                        </flux:sidebar.item>
                     @endif
                 </flux:sidebar.group>
             </flux:sidebar.nav>

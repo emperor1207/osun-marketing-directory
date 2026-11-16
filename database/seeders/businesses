@@ -1,0 +1,1419 @@
+[
+ {
+  "name": "Adunni's Kitchen & Catering",
+  "owner": "Adunni Bello",
+  "category": "Food and Restaurants",
+  "town": "Osogbo",
+  "description": "Home-style Nigerian meals, party trays and event catering for offices, weddings and naming ceremonies.",
+  "address": "12 Gbongan Road, Osogbo",
+  "phone": "08000000001",
+  "whatsapp": "08000000001",
+  "items": [
+   [
+    "Jollof rice and chicken",
+    "Single plate with fried chicken and plantain.",
+    2500,
+    "product"
+   ],
+   [
+    "Party jollof tray",
+    "Serves about 15 people.",
+    18000,
+    "product"
+   ],
+   [
+    "Small chops platter",
+    "Spring rolls, samosa, puff-puff and chicken wings.",
+    6000,
+    "product"
+   ],
+   [
+    "Event catering",
+    "Full catering service with serving staff for events.",
+    150000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "The party jollof was a hit at my sister’s wedding. Delivered on time."
+   ],
+   [
+    2,
+    4,
+    "Tasty food and fair prices."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b01",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Ede Fresh Bakery",
+  "owner": "Kamoru Ajayi",
+  "category": "Food and Restaurants",
+  "town": "Ede",
+  "description": "Fresh bread, pies and celebration cakes baked every morning.",
+  "address": "5 Station Road, Ede",
+  "phone": "08000000002",
+  "whatsapp": "08000000002",
+  "items": [
+   [
+    "Sliced bread",
+    "Large family loaf, baked daily.",
+    1200,
+    "product"
+   ],
+   [
+    "Meat pie",
+    "Flaky pastry with minced beef filling.",
+    500,
+    "product"
+   ],
+   [
+    "Birthday cake",
+    "Vanilla or chocolate cake, 8 inches.",
+    15000,
+    "product"
+   ],
+   [
+    "Custom cake order",
+    "Design and bake a cake to your specification.",
+    25000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "Best bread in Ede. Always fresh."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b02",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Glow Touch Salon",
+  "owner": "Bukola Ibitoye",
+  "category": "Beauty and Personal Care",
+  "town": "Ile-Ife",
+  "description": "Hair braiding, wig installation and treatment by trained stylists. Home service available.",
+  "address": "8 Lagere Road, Ile-Ife",
+  "phone": "08000000003",
+  "whatsapp": "08000000003",
+  "items": [
+   [
+    "Hair braiding",
+    "Knotless, cornrow and box braids.",
+    8000,
+    "service"
+   ],
+   [
+    "Wig installation",
+    "Wig fitting, styling and installation.",
+    10000,
+    "service"
+   ],
+   [
+    "Hair treatment",
+    "Deep conditioning and scalp treatment.",
+    5000,
+    "service"
+   ],
+   [
+    "Natural hair oil",
+    "Handmade oil blend for growth and shine.",
+    3500,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "My braids lasted six weeks and looked neat the whole time."
+   ],
+   [
+    2,
+    5,
+    "Professional and punctual."
+   ],
+   [
+    3,
+    4,
+    "Good work, but book early on weekends."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b03",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Ilesa Stitches Tailoring",
+  "owner": "Segun Fadeyi",
+  "category": "Fashion and Clothing",
+  "town": "Ilesa",
+  "description": "Native wear, corporate outfits and school uniforms sewn to your measurements.",
+  "address": "21 Ereja Square, Ilesa",
+  "phone": "08000000004",
+  "whatsapp": "08000000004",
+  "items": [
+   [
+    "Ankara native wear",
+    "Custom men’s and women’s native outfits.",
+    15000,
+    "service"
+   ],
+   [
+    "School uniform sewing",
+    "Per set, bulk discount available.",
+    6000,
+    "service"
+   ],
+   [
+    "Aso-oke cap",
+    "Hand-woven cap in assorted colours.",
+    7500,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    4,
+    "Neat finishing. Delivered before the event."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b04",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Iwo Tech Repair Hub",
+  "owner": "Wasiu Olanrewaju",
+  "category": "Electronics and Information Technology",
+  "town": "Iwo",
+  "description": "Phone and laptop repairs, accessories and software installation with a 30-day repair warranty.",
+  "address": "3 Oja Oba Road, Iwo",
+  "phone": "08000000005",
+  "whatsapp": "08000000005",
+  "items": [
+   [
+    "Phone screen replacement",
+    "Most Android and iPhone models.",
+    12000,
+    "service"
+   ],
+   [
+    "Laptop repair",
+    "Diagnosis, repair and cleaning.",
+    8000,
+    "service"
+   ],
+   [
+    "Phone charger",
+    "Fast-charging adapter and cable.",
+    3000,
+    "product"
+   ],
+   [
+    "Power bank 10000mAh",
+    "Dual-port power bank.",
+    9500,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    3,
+    5,
+    "Fixed my cracked screen in one hour."
+   ],
+   [
+    1,
+    4,
+    "Fair price and honest advice."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b05",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Ikirun Green Farms",
+  "owner": "Mojisola Alade",
+  "category": "Agriculture and Farming",
+  "town": "Ikirun",
+  "description": "Farm-fresh eggs, catfish and poultry feed supplied to homes, restaurants and farmers.",
+  "address": "Km 4, Iwo Road, Ikirun",
+  "phone": "08000000006",
+  "whatsapp": "08000000006",
+  "items": [
+   [
+    "Fresh eggs (crate)",
+    "Crate of 30 farm eggs.",
+    3800,
+    "product"
+   ],
+   [
+    "Catfish (per kg)",
+    "Live or smoked catfish.",
+    3000,
+    "product"
+   ],
+   [
+    "Poultry feed (25kg)",
+    "Layer and grower feed.",
+    14500,
+    "product"
+   ],
+   [
+    "Farm consultancy",
+    "Advice on starting a poultry or fish farm.",
+    20000,
+    "service"
+   ]
+  ],
+  "reviews": [],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b06",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Orangun Build & Plumb",
+  "owner": "Taiwo Akinola",
+  "category": "Construction and Home Improvement",
+  "town": "Ila-Orangun",
+  "description": "Plumbing, electrical wiring and roofing for homes and small commercial buildings.",
+  "address": "14 Market Road, Ila-Orangun",
+  "phone": "08000000007",
+  "whatsapp": "08000000007",
+  "items": [
+   [
+    "Plumbing repairs",
+    "Leaks, pipe fitting and borehole connections.",
+    10000,
+    "service"
+   ],
+   [
+    "Electrical wiring",
+    "Wiring for rooms and full buildings, priced per room.",
+    25000,
+    "service"
+   ],
+   [
+    "Roofing sheets",
+    "Long-span aluminium sheets, per bundle.",
+    6500,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    4,
+    "Arrived on time and cleaned up after the job."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b07",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Ejigbo Auto Care",
+  "owner": "Lateef Oyewole",
+  "category": "Automotive and Transportation",
+  "town": "Ejigbo",
+  "description": "Car servicing, oil changes and batteries. Experienced mechanics and genuine parts.",
+  "address": "2 Osogbo Road, Ejigbo",
+  "phone": "08000000008",
+  "whatsapp": "08000000008",
+  "items": [
+   [
+    "Car servicing",
+    "Full service with inspection report.",
+    15000,
+    "service"
+   ],
+   [
+    "Engine oil change",
+    "Oil and filter replacement.",
+    7000,
+    "service"
+   ],
+   [
+    "Car battery",
+    "12V maintenance-free battery with 6-month warranty.",
+    55000,
+    "product"
+   ]
+  ],
+  "reviews": [],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b08",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "BrightPath Tutorial Centre",
+  "owner": "Grace Oladipo",
+  "category": "Education and Training",
+  "town": "Ikire",
+  "description": "Exam preparation and computer skills training for students and young adults.",
+  "address": "9 School Road, Ikire",
+  "phone": "08000000009",
+  "whatsapp": "08000000009",
+  "items": [
+   [
+    "JAMB and WAEC coaching",
+    "Three-month preparation programme.",
+    25000,
+    "service"
+   ],
+   [
+    "Computer training",
+    "Microsoft Office, typing and internet skills.",
+    30000,
+    "service"
+   ],
+   [
+    "Past question books",
+    "Latest JAMB and WAEC practice books.",
+    4000,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    3,
+    5,
+    "My brother passed his JAMB after joining the classes."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b09",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "CareFirst Pharmacy",
+  "owner": "Pharm. Rukayat Yusuf",
+  "category": "Health and Wellness",
+  "town": "Osogbo",
+  "description": "Licensed community pharmacy offering over-the-counter medicines, supplements and basic health checks.",
+  "address": "27 Ola-Iya Junction, Osogbo",
+  "phone": "08000000010",
+  "whatsapp": "08000000010",
+  "items": [
+   [
+    "Vitamin C tablets",
+    "Bottle of 100 tablets.",
+    1500,
+    "product"
+   ],
+   [
+    "Blood pressure check",
+    "Quick check with advice.",
+    500,
+    "service"
+   ],
+   [
+    "First aid kit",
+    "Home and office first aid kit.",
+    6500,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "Helpful staff and always well stocked."
+   ],
+   [
+    3,
+    4,
+    "Convenient location."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b10",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Osun Glam Events",
+  "owner": "Dayo Famuyiwa",
+  "category": "Events and Entertainment",
+  "town": "Osogbo",
+  "description": "Event decoration, canopy and chair rentals and photography for weddings and parties.",
+  "address": "6 Oke-Fia Road, Osogbo",
+  "phone": "08000000011",
+  "whatsapp": "08000000011",
+  "items": [
+   [
+    "Event decoration",
+    "Hall and outdoor decoration packages.",
+    80000,
+    "service"
+   ],
+   [
+    "Canopy and chairs rental",
+    "Per 100 guests.",
+    30000,
+    "service"
+   ],
+   [
+    "Event photography",
+    "Full-day coverage with edited photos.",
+    60000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    5,
+    "The decoration transformed the hall. Highly recommended."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b11",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Ife Heritage Guest House",
+  "owner": "Mrs. Folake Adeyemi",
+  "category": "Hospitality and Accommodation",
+  "town": "Ile-Ife",
+  "description": "Clean, quiet guest house near the university with 24-hour power and secure parking.",
+  "address": "15 Ibadan Road, Ile-Ife",
+  "phone": "08000000012",
+  "whatsapp": "08000000012",
+  "items": [
+   [
+    "Standard room (per night)",
+    "Air-conditioned room with Wi-Fi.",
+    15000,
+    "service"
+   ],
+   [
+    "Executive room (per night)",
+    "Larger room with a work desk.",
+    25000,
+    "service"
+   ],
+   [
+    "Event hall hire",
+    "Hall for meetings and small events.",
+    50000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    3,
+    5,
+    "Quiet, clean and good value."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b12",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Ede Mega Provisions",
+  "owner": "Alhaji Musa Raji",
+  "category": "Retail and General Shopping",
+  "town": "Ede",
+  "description": "Wholesale and retail provisions, rice, oil and household goods at fair prices.",
+  "address": "40 Oja Market, Ede",
+  "phone": "08000000013",
+  "whatsapp": "08000000013",
+  "items": [
+   [
+    "Rice (50kg bag)",
+    "Local parboiled rice.",
+    78000,
+    "product"
+   ],
+   [
+    "Vegetable oil (5 litres)",
+    "Refined vegetable oil.",
+    12000,
+    "product"
+   ],
+   [
+    "Bulk delivery",
+    "Delivery of bulk orders within Ede.",
+    3000,
+    "service"
+   ]
+  ],
+  "reviews": [],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b13",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Gbongan Homes & Land",
+  "owner": "Femi Ogundele",
+  "category": "Real Estate and Property",
+  "town": "Gbongan",
+  "description": "Land sales, property listing and property management with proper documentation.",
+  "address": "1 Ibadan Road, Gbongan",
+  "phone": "08000000014",
+  "whatsapp": "08000000014",
+  "items": [
+   [
+    "Residential plot",
+    "Plot of land with survey plan.",
+    1500000,
+    "product"
+   ],
+   [
+    "Property management",
+    "Monthly management of rental properties.",
+    50000,
+    "service"
+   ]
+  ],
+  "reviews": [],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b14",
+  "gallery_counts": [
+   2,
+   2
+  ]
+ },
+ {
+  "name": "Ilobu Craft Studio",
+  "owner": "Yetunde Olaniyan",
+  "category": "Arts, Crafts and Creative Services",
+  "town": "Ilobu",
+  "description": "Adire fabric, logo design and wedding photography by local creatives.",
+  "address": "7 Palace Road, Ilobu",
+  "phone": "08000000015",
+  "whatsapp": "08000000015",
+  "items": [
+   [
+    "Adire fabric",
+    "Hand-dyed adire, per 6 yards.",
+    9000,
+    "product"
+   ],
+   [
+    "Logo design",
+    "Logo with three revisions.",
+    15000,
+    "service"
+   ],
+   [
+    "Wedding photography",
+    "Full-day coverage.",
+    70000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "Beautiful adire and quick delivery."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b15",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Iwo Fabric Palace",
+  "owner": "Hajia Sidikat Lawal",
+  "category": "Fashion and Clothing",
+  "town": "Iwo",
+  "description": "Lace, Ankara and Aso-oke fabrics sold by the yard.",
+  "address": "18 Central Mosque Road, Iwo",
+  "phone": "08000000016",
+  "whatsapp": "08000000016",
+  "items": [
+   [
+    "Ankara fabric (6 yards)",
+    "Assorted prints.",
+    8000,
+    "product"
+   ]
+  ],
+  "reviews": [],
+  "status": "pending",
+  "rejection_reason": null,
+  "key": "b16",
+  "gallery_counts": [
+   2
+  ]
+ },
+ {
+  "name": "Quick Errands Ilesa",
+  "owner": "Seyi Akintunde",
+  "category": "Other Services",
+  "town": "Ilesa",
+  "description": "Delivery, shopping and queue-waiting errands within Ilesa.",
+  "address": "4 Isokun Street, Ilesa",
+  "phone": "08000000017",
+  "whatsapp": "08000000017",
+  "items": [
+   [
+    "Local errand",
+    "Within Ilesa town.",
+    2000,
+    "service"
+   ]
+  ],
+  "reviews": [],
+  "status": "pending",
+  "rejection_reason": null,
+  "key": "b17",
+  "gallery_counts": [
+   2
+  ]
+ },
+ {
+  "name": "Sample Trading Co",
+  "owner": "Test Owner",
+  "category": "Other Services",
+  "town": "Osogbo",
+  "description": "Trading.",
+  "address": "Osogbo",
+  "phone": "08000000018",
+  "whatsapp": "08000000018",
+  "items": [],
+  "reviews": [],
+  "status": "rejected",
+  "rejection_reason": "Please add a clearer description of what you sell and a working phone number, then submit again.",
+  "key": "b18",
+  "gallery_counts": []
+ },
+ {
+  "name": "Greenleaf Pharmacy & Stores",
+  "owner": "Pharm. Tunde Adigun",
+  "category": "Health and Wellness",
+  "town": "Osogbo",
+  "description": "Pharmacy and general store with prescription filling, baby care products and vitamins. Open late every day.",
+  "address": "33 Olaiya Road, Osogbo",
+  "phone": "08000000019",
+  "whatsapp": "08000000119",
+  "items": [
+   [
+    "Malaria test kit",
+    "Rapid test kit with instructions.",
+    2500,
+    "product"
+   ],
+   [
+    "Baby diaper pack",
+    "Pack of 40 soft diapers.",
+    6800,
+    "product"
+   ],
+   [
+    "Multivitamin (60 tablets)",
+    "Daily multivitamin for adults.",
+    3500,
+    "product"
+   ],
+   [
+    "Health advice and BP check",
+    "Free advice from a licensed pharmacist.",
+    0,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "Always has what I need and the pharmacist explains everything."
+   ],
+   [
+    2,
+    4,
+    "Clean shop and fair prices."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b19",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Grand Plaza Mall",
+  "owner": "Hajia Ronke Salami",
+  "category": "Retail and General Shopping",
+  "town": "Ede",
+  "description": "A one-stop shopping mall with a supermarket, fashion boutiques, a phone gallery and a food court.",
+  "address": "Abere Road, Ede",
+  "phone": "08000000020",
+  "whatsapp": "08000000020",
+  "items": [
+   [
+    "Supermarket weekly bundle",
+    "Rice, oil, tomato paste, spaghetti and seasoning.",
+    35000,
+    "product"
+   ],
+   [
+    "Men’s sneakers",
+    "Durable everyday sneakers, sizes 40 to 46.",
+    18000,
+    "product"
+   ],
+   [
+    "Shop space rental",
+    "Small boutique space inside the mall, per month.",
+    60000,
+    "service"
+   ],
+   [
+    "Gift wrapping",
+    "Professional gift wrapping per item.",
+    1000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    3,
+    5,
+    "Spacious, clean and the parking is easy."
+   ],
+   [
+    1,
+    4,
+    "Good variety under one roof."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b20",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Sunshine Laundry & Dry Cleaners",
+  "owner": "Mrs. Bola Ariyo",
+  "category": "Other Services",
+  "town": "Osogbo",
+  "description": "Wash, iron and dry-clean service with pickup and delivery within Osogbo. Same-day express available.",
+  "address": "10 Dele Street, Osogbo",
+  "phone": "08000000021",
+  "whatsapp": "08000000021",
+  "items": [
+   [
+    "Wash and fold (per kg)",
+    "Washed, dried and neatly folded.",
+    700,
+    "service"
+   ],
+   [
+    "Suit dry-cleaning",
+    "Full suit cleaned and pressed.",
+    3500,
+    "service"
+   ],
+   [
+    "Duvet cleaning",
+    "Single or double duvet.",
+    4500,
+    "service"
+   ],
+   [
+    "Pickup and delivery",
+    "Within Osogbo, per trip.",
+    1500,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    5,
+    "My clothes came back spotless and on time."
+   ],
+   [
+    3,
+    5,
+    "Pickup service saves me so much time."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b21",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Alu-Pro Aluminium Works",
+  "owner": "Engr. Kunle Bamgbose",
+  "category": "Construction and Home Improvement",
+  "town": "Ile-Ife",
+  "description": "Windows, doors, shop fronts and roofing in quality aluminium. Free site inspection and quotation.",
+  "address": "Road 7, Lagere, Ile-Ife",
+  "phone": "08000000022",
+  "whatsapp": "08000000022",
+  "items": [
+   [
+    "Sliding window (per panel)",
+    "Aluminium sliding window with glass.",
+    45000,
+    "product"
+   ],
+   [
+    "Aluminium door",
+    "Strong door with lock set.",
+    85000,
+    "product"
+   ],
+   [
+    "Shop front installation",
+    "Complete glass shop front, per metre.",
+    30000,
+    "service"
+   ],
+   [
+    "Free quotation visit",
+    "Site visit and written quotation.",
+    0,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "Neat installation and they finished early."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b22",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Harvest Hill Farms",
+  "owner": "Mr. Dapo Oyelaran",
+  "category": "Agriculture and Farming",
+  "town": "Ilesa",
+  "description": "Vegetables, yam, palm oil and fresh farm produce delivered to markets, restaurants and homes.",
+  "address": "Km 12, Ijebu-Jesa Road, Ilesa",
+  "phone": "08000000023",
+  "whatsapp": "08000000023",
+  "items": [
+   [
+    "Yam tubers (per 5)",
+    "Fresh, large tubers.",
+    9500,
+    "product"
+   ],
+   [
+    "Palm oil (5 litres)",
+    "Pure red palm oil.",
+    11000,
+    "product"
+   ],
+   [
+    "Fresh vegetable basket",
+    "Tomato, pepper, ugu and onions.",
+    6000,
+    "product"
+   ],
+   [
+    "Farm visit and training",
+    "Half-day introduction to modern farming.",
+    15000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    5,
+    "Fresh produce at the best price in Ilesa."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b23",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "PixelPoint Multimedia",
+  "owner": "Seun Adewale",
+  "category": "Arts, Crafts and Creative Services",
+  "town": "Osogbo",
+  "description": "Photography, video production, graphic design and printing for events and businesses.",
+  "address": "Ground floor, Bola Plaza, Osogbo",
+  "phone": "08000000024",
+  "whatsapp": "08000000024",
+  "items": [
+   [
+    "Passport photographs",
+    "Set of 8 prints, ready in 10 minutes.",
+    1500,
+    "service"
+   ],
+   [
+    "Flyer and banner design",
+    "Custom design for your event or business.",
+    8000,
+    "service"
+   ],
+   [
+    "Event video coverage",
+    "Full-day filming with edited highlights.",
+    90000,
+    "service"
+   ],
+   [
+    "Photo frame printing",
+    "A4 framed photo print.",
+    4500,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    3,
+    5,
+    "Great quality photos and quick delivery."
+   ],
+   [
+    1,
+    4,
+    "Very creative designs."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b24",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Cornerstone Realty & Properties",
+  "owner": "Barr. Wale Adegoke",
+  "category": "Real Estate and Property",
+  "town": "Ede",
+  "description": "Land, houses and shops for sale or rent in Ede and Osogbo with verified documents and honest advice.",
+  "address": "4 Ibadan Road, Ede",
+  "phone": "08000000025",
+  "whatsapp": "08000000025",
+  "items": [
+   [
+    "Two-bedroom flat for rent",
+    "Tiled flat with water and prepaid meter, per year.",
+    350000,
+    "service"
+   ],
+   [
+    "Plot of land (600sqm)",
+    "Dry land with survey and receipt.",
+    1800000,
+    "product"
+   ],
+   [
+    "Property inspection",
+    "Guided inspection of listed properties.",
+    5000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    5,
+    "They were honest and the documents were all verified."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b25",
+  "gallery_counts": [
+   2,
+   2,
+   0
+  ]
+ },
+ {
+  "name": "Sweet Crumbs Bakery",
+  "owner": "Mrs. Yemi Ojo",
+  "category": "Food and Restaurants",
+  "town": "Ilesa",
+  "description": "Cakes, cupcakes, doughnuts and small chops for birthdays, weddings and office parties.",
+  "address": "15 Ibokun Road, Ilesa",
+  "phone": "08000000026",
+  "whatsapp": "08000000026",
+  "items": [
+   [
+    "Chocolate birthday cake",
+    "Two-layer chocolate cake with buttercream.",
+    18000,
+    "product"
+   ],
+   [
+    "Doughnut box (12)",
+    "Assorted glazed doughnuts.",
+    6000,
+    "product"
+   ],
+   [
+    "Cupcake dozen",
+    "Vanilla and chocolate cupcakes.",
+    7500,
+    "product"
+   ],
+   [
+    "Wedding cake design",
+    "Tiered cake made to your design.",
+    85000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    5,
+    "The cake looked as good as it tasted."
+   ],
+   [
+    3,
+    5,
+    "Delivered fresh and on time."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b26",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Lush Scents & Cosmetics",
+  "owner": "Miss Tolani Akande",
+  "category": "Beauty and Personal Care",
+  "town": "Iwo",
+  "description": "Perfumes, body oils, skincare and makeup. Gift sets available for every occasion.",
+  "address": "6 Station Road, Iwo",
+  "phone": "08000000027",
+  "whatsapp": "08000000027",
+  "items": [
+   [
+    "Perfume oil (30ml)",
+    "Long-lasting perfume oil in assorted scents.",
+    4500,
+    "product"
+   ],
+   [
+    "Shea butter body cream",
+    "Natural moisturising cream.",
+    3200,
+    "product"
+   ],
+   [
+    "Gift set",
+    "Perfume, cream and soap in a gift box.",
+    12000,
+    "product"
+   ],
+   [
+    "Makeup session",
+    "Professional makeup for events.",
+    15000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    4,
+    "Lovely scents and polite service."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b27",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Spark Print & Business Centre",
+  "owner": "Mr. Ibrahim Lawal",
+  "category": "Electronics and Information Technology",
+  "town": "Osogbo",
+  "description": "Printing, photocopying, laminating, typing, scanning and internet browsing for students and offices.",
+  "address": "Opposite LAUTECH Campus Gate, Osogbo",
+  "phone": "08000000028",
+  "whatsapp": "08000000028",
+  "items": [
+   [
+    "Document printing (per page)",
+    "Black and white or colour printing.",
+    50,
+    "service"
+   ],
+   [
+    "Project binding",
+    "Spiral or hard-cover binding.",
+    2500,
+    "service"
+   ],
+   [
+    "Business cards (100)",
+    "Full-colour business cards.",
+    6000,
+    "product"
+   ],
+   [
+    "Online form filling",
+    "JAMB, passport and visa form assistance.",
+    2000,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    3,
+    5,
+    "Fast and cheap printing, great for students."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b28",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Mama Bisi Mini Mart",
+  "owner": "Mrs. Bisi Adesina",
+  "category": "Retail and General Shopping",
+  "town": "Ikirun",
+  "description": "Neighbourhood store for groceries, cold drinks, toiletries and recharge cards with home delivery.",
+  "address": "22 Oja Oba Street, Ikirun",
+  "phone": "08000000029",
+  "whatsapp": "08000000029",
+  "items": [
+   [
+    "Rice (10kg)",
+    "Clean local rice.",
+    16500,
+    "product"
+   ],
+   [
+    "Indomie carton",
+    "Carton of 40 packs.",
+    8500,
+    "product"
+   ],
+   [
+    "Cold drinks crate",
+    "Crate of 12 soft drinks.",
+    4800,
+    "product"
+   ],
+   [
+    "Home delivery",
+    "Within Ikirun town.",
+    500,
+    "service"
+   ]
+  ],
+  "reviews": [
+   [
+    1,
+    4,
+    "Friendly owner and fair prices."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b29",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ },
+ {
+  "name": "Elite Fitness & Wellness Studio",
+  "owner": "Coach Femi Akinwale",
+  "category": "Health and Wellness",
+  "town": "Ile-Ife",
+  "description": "Gym, aerobics classes and personal training with clean equipment and trained instructors.",
+  "address": "Opposite Mayfair, Ile-Ife",
+  "phone": "08000000030",
+  "whatsapp": "08000000030",
+  "items": [
+   [
+    "Monthly gym membership",
+    "Full access to gym equipment.",
+    12000,
+    "service"
+   ],
+   [
+    "Personal training session",
+    "One-hour session with a coach.",
+    5000,
+    "service"
+   ],
+   [
+    "Aerobics class",
+    "Group class, per session.",
+    1500,
+    "service"
+   ],
+   [
+    "Protein shake",
+    "Fresh post-workout shake.",
+    2500,
+    "product"
+   ]
+  ],
+  "reviews": [
+   [
+    2,
+    5,
+    "Clean gym and excellent trainers."
+   ],
+   [
+    3,
+    4,
+    "Good value for money."
+   ]
+  ],
+  "status": "approved",
+  "rejection_reason": null,
+  "key": "b30",
+  "gallery_counts": [
+   2,
+   2,
+   0,
+   0
+  ]
+ }
+]

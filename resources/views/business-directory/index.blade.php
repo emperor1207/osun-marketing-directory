@@ -60,6 +60,16 @@
                 </select>
             </div>
 
+            <div>
+                <label for="directory-sort" class="mb-2 block text-sm font-medium text-zinc-800 dark:text-zinc-200">Sort by</label>
+                <select id="directory-sort" name="sort" class="min-h-11 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-emerald-700 focus:ring-2 focus:ring-emerald-700/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white">
+                    <option value="name" @selected(($filters['sort'] ?? 'name') === 'name')>Name (A to Z)</option>
+                    <option value="rating" @selected(($filters['sort'] ?? '') === 'rating')>Highest rated</option>
+                    <option value="newest" @selected(($filters['sort'] ?? '') === 'newest')>Newest</option>
+                    <option value="popular" @selected(($filters['sort'] ?? '') === 'popular')>Most visited</option>
+                </select>
+            </div>
+
             <div class="flex flex-col gap-3 sm:flex-row sm:items-end md:col-span-2 lg:col-span-4">
                 <button type="submit" class="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-800 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">Apply filters</button>
                 <a href="{{ route('directory.index') }}" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-zinc-300 px-5 py-2.5 text-sm font-medium text-zinc-700 transition hover:border-emerald-400 hover:bg-emerald-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-800">Clear</a>
@@ -89,7 +99,13 @@
             @else
                 <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                     @foreach ($businessProfiles as $businessProfile)
-                        <article class="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
+                        <article class="relative flex min-w-0 flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
+                            @if ($businessProfile->user_id !== auth()->id())
+                                <form method="POST" action="{{ route('favourites.toggle', $businessProfile) }}" class="absolute end-3 top-3 z-10">
+                                    @csrf
+                                    <button type="submit" aria-label="{{ in_array($businessProfile->id, $favouriteIds, true) ? 'Remove '.$businessProfile->business_name.' from saved businesses' : 'Save '.$businessProfile->business_name }}" class="flex size-10 items-center justify-center rounded-full bg-white/90 text-xl text-rose-600 shadow transition hover:bg-white">{{ in_array($businessProfile->id, $favouriteIds, true) ? '♥' : '♡' }}</button>
+                                </form>
+                            @endif
                             @if ($businessProfile->cover_image_url)
                                 <img src="{{ $businessProfile->cover_image_url }}" alt="" width="720" height="360" loading="lazy" decoding="async" class="h-40 w-full object-cover">
                             @else
@@ -107,6 +123,14 @@
                                         <p class="truncate text-sm font-medium text-emerald-800 dark:text-emerald-300">{{ $businessProfile->category->name }}</p>
                                     </div>
                                 </div>
+
+                                <p class="text-sm font-medium text-amber-700 dark:text-amber-300">
+                                    @if ($businessProfile->visible_reviews_count > 0)
+                                        <span aria-hidden="true">★</span> {{ number_format((float) $businessProfile->visible_reviews_avg_rating, 1) }} / 5 · {{ number_format($businessProfile->visible_reviews_count) }} {{ \Illuminate\Support\Str::plural('review', $businessProfile->visible_reviews_count) }}
+                                    @else
+                                        No ratings yet
+                                    @endif
+                                </p>
 
                                 @if ($businessProfile->description)
                                     <p class="text-sm leading-6 text-zinc-700 dark:text-zinc-300">{{ \Illuminate\Support\Str::limit(strip_tags($businessProfile->description), 140) }}</p>

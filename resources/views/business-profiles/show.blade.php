@@ -79,5 +79,46 @@
                 </dl>
             </div>
         </section>
+
+        <section class="flex flex-col gap-5" aria-labelledby="insights-heading">
+            <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">Performance</p>
+                <h2 id="insights-heading" class="mt-1 text-2xl font-bold text-zinc-950 dark:text-white">Business insights</h2>
+            </div>
+
+            <dl class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                @foreach ([
+                    'Visitors (all time)' => number_format($analytics['total_visitors']),
+                    'New visitors, last 7 days' => number_format($analytics['last_7_days']),
+                    'New visitors, last 30 days' => number_format($analytics['last_30_days']),
+                    'Average rating' => $analytics['reviews_count'] > 0 ? number_format((float) $analytics['average_rating'], 1).' / 5' : 'No ratings yet',
+                    'Reviews' => number_format($analytics['reviews_count']),
+                    'Saved by customers' => number_format($analytics['saved_by']),
+                    'Available listings' => $analytics['available_listings'].' of '.$analytics['listings'],
+                ] as $label => $value)
+                    <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                        <dt class="text-sm font-medium text-zinc-500 dark:text-zinc-400">{{ $label }}</dt>
+                        <dd class="mt-2 text-3xl font-bold text-zinc-950 dark:text-white">{{ $value }}</dd>
+                    </div>
+                @endforeach
+            </dl>
+
+            @php($maxDaily = max(1, collect($analytics['daily'])->max('count')))
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                <h3 class="font-semibold text-zinc-950 dark:text-white">New visitors, last 14 days</h3>
+                <div class="mt-4 flex h-32 items-end gap-1.5" role="img" aria-label="Bar chart of new visitors for each of the last 14 days">
+                    @foreach ($analytics['daily'] as $day)
+                        <div class="flex h-full flex-1 items-end">
+                            <div class="w-full rounded-t bg-emerald-600" style="height: {{ max(4, round($day['count'] / $maxDaily * 100)) }}%" title="{{ $day['label'] }}: {{ $day['count'] }}"></div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="mt-2 flex justify-between text-xs text-zinc-500 dark:text-zinc-400">
+                    <span>{{ $analytics['daily'][0]['label'] }}</span>
+                    <span>{{ $analytics['daily'][13]['label'] }}</span>
+                </div>
+                <p class="mt-3 text-xs text-zinc-500 dark:text-zinc-400">Each visitor is counted once, on their first visit. Your own visits are not counted.</p>
+            </div>
+        </section>
     </main>
 </x-layouts::app>

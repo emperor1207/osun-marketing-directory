@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BusinessProfile;
 use App\Models\BusinessProfileView;
 use App\Models\Category;
+use App\Models\Favourite;
 use App\Models\LocalGovernmentArea;
 use App\Models\Town;
 use App\Models\User;
@@ -16,11 +17,15 @@ use Illuminate\View\View;
 
 class BusinessDirectoryController extends Controller
 {
+    /** Average of the visible ratings, as SQL, so sorting works on every database. */
+    private const RATING_SQL = "(select avg(reviews.rating) from reviews where reviews.business_profile_id = business_profiles.id and reviews.status = 'visible')";
+
     public function index(Request $request): View
     {
         $filters = $request->validate([
             'search' => ['nullable', 'string', 'max:100'],
             'item_type' => ['nullable', Rule::in(['product', 'service'])],
+            'sort' => ['nullable', Rule::in(['name', 'rating', 'newest', 'popular'])],
             'category_id' => [
                 'nullable',
                 'integer',
@@ -40,9 +45,17 @@ class BusinessDirectoryController extends Controller
 
         $terms = $this->searchTerms($filters['search'] ?? null);
         $itemType = $filters['item_type'] ?? null;
+        $sort = $filters['sort'] ?? 'name';
 
         $businessProfiles = BusinessProfile::query()
             ->where('status', 'approved')
+            ->withCount([
+                'reviews as visible_reviews_count' => fn ($query) => $query->where('status', 'visible'),
+                'views as unique_visitors_count',
+            ])
+            ->withAvg([
+                'reviews as visible_reviews_avg_rating' => fn ($query) => $query->where('status', 'visible'),
+            ], 'rating')
             ->with([
                 'category:id,name',
                 'town:id,name,local_government_area_id',
@@ -101,6 +114,12 @@ class BusinessDirectoryController extends Controller
                 isset($filters['town_id']),
                 fn (Builder $query) => $query->where('town_id', $filters['town_id'])
             )
+            ->when($sort === 'rating', fn (Builder $query) => $query
+                ->orderByRaw(self::RATING_SQL.' is null')
+                ->orderByRaw(self::RATING_SQL.' desc')
+                ->orderByDesc('visible_reviews_count'))
+            ->when($sort === 'newest', fn (Builder $query) => $query->orderByDesc('created_at'))
+            ->when($sort === 'popular', fn (Builder $query) => $query->orderByDesc('unique_visitors_count'))
             ->orderBy('business_name')
             ->orderBy('id')
             ->paginate(12)
@@ -123,7 +142,56 @@ class BusinessDirectoryController extends Controller
                 ->orderBy('name')
                 ->get(['id', 'name', 'local_government_area_id']),
             'filters' => $filters,
+            'favouriteIds' => $request->user() === null
+                ? []
+                : Favourite::query()->where('user_id', $request->user()->id)->pluck('business_profile_id')->all(),
         ]);
+    }
+
+    /** Nigerian numbers such as 0801... become 234801... as WhatsApp links require. */
+    private function whatsappUrl(BusinessProfile $profile): ?string
+    {
+        $digits = preg_replace('/\D+/', '', (string) $profile->whatsapp);
+
+        if ($digits === '') {
+            return null;
+        }
+
+        if (str_starts_with($digits, '0')) {
+            $digits = '234'.substr($digits, 1);
+        }
+
+        $text = rawurlencode("Hello {$profile->business_name}, I found your business on the Osun Marketing Directory.");
+
+        return "https://wa.me/{$digits}?text={$text}";
+    }
+
+    private function directionsUrl(BusinessProfile $profile): string
+    {
+        if ($profile->latitude !== null && $profile->longitude !== null) {
+            return 'https://www.google.com/maps/dir/?api=1&destination='.(float) $profile->latitude.','.(float) $profile->longitude;
+        }
+
+        $address = trim(($profile->street_address ? $profile->street_address.', ' : '').$profile->town->name.', Osun State, Nigeria');
+
+        return 'https://www.google.com/maps/search/?api=1&query='.rawurlencode($address);
+    }
+
+    /** @return array{0: string|null, 1: string|null} embeddable map and full-size map links */
+    private function mapUrls(BusinessProfile $profile): array
+    {
+        if ($profile->latitude === null || $profile->longitude === null) {
+            return [null, null];
+        }
+
+        $lat = (float) $profile->latitude;
+        $lon = (float) $profile->longitude;
+        $bbox = implode('%2C', [round($lon - 0.008, 6), round($lat - 0.005, 6), round($lon + 0.008, 6), round($lat + 0.005, 6)]);
+
+        return [
+            "https://www.openstreetmap.org/export/embed.html?bbox={$bbox}&layer=mapnik&marker={$lat}%2C{$lon}",
+            "https://www.openstreetmap.org/?mlat={$lat}&mlon={$lon}#map=16/{$lat}/{$lon}",
+        ];
     }
 
     /**
@@ -175,6 +243,7 @@ class BusinessDirectoryController extends Controller
                 'town:id,name,local_government_area_id',
                 'town.localGovernmentArea:id,name',
                 'products' => fn (HasMany $products) => $products->getQuery()
+                    ->with('images')
                     ->orderBy('item_type')
                     ->orderBy('name'),
             ])
@@ -222,9 +291,15 @@ class BusinessDirectoryController extends Controller
             'myReview' => $myReview,
             'canReview' => $isCustomer && $myReview === null,
             'canReport' => $isCustomer && ! $hasReported,
-            'whatsappUrl' => $profile->whatsapp === null
+            'whatsappUrl' => $this->whatsappUrl($profile),
+            'phoneUrl' => $profile->phone === null || preg_replace('/[^\d+]/', '', $profile->phone) === ''
                 ? null
-                : 'https://wa.me/'.preg_replace('/\D+/', '', $profile->whatsapp),
+                : 'tel:'.preg_replace('/[^\d+]/', '', $profile->phone),
+            'directionsUrl' => $this->directionsUrl($profile),
+            'mapEmbedUrl' => $this->mapUrls($profile)[0],
+            'mapUrl' => $this->mapUrls($profile)[1],
+            'isFavourite' => $viewer instanceof User
+                && Favourite::query()->where('user_id', $viewer->id)->where('business_profile_id', $profile->id)->exists(),
             'logoUrl' => $profile->logo_url,
             'coverImageUrl' => $profile->cover_image_url,
         ]);

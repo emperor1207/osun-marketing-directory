@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\BusinessProfile;
 use App\Models\Category;
+use App\Models\Favourite;
 use App\Models\LocalGovernmentArea;
 use App\Models\Town;
 use App\Models\User;
+use App\Services\ImageOptimizer;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,6 +22,8 @@ use RuntimeException;
 
 class BusinessProfileController extends Controller
 {
+    public function __construct(private readonly ImageOptimizer $images) {}
+
     public function show(Request $request): View|RedirectResponse
     {
         $user = $this->businessOwner($request);
@@ -33,7 +37,45 @@ class BusinessProfileController extends Controller
 
         return view('business-profiles.show', [
             'businessProfile' => $businessProfile,
+            'analytics' => $this->analytics($businessProfile),
         ]);
+    }
+
+    /**
+     * Simple numbers for the owner. A visitor is counted once, on the first visit,
+     * so "new visitors" are people who opened the page for the first time in that period.
+     *
+     * @return array<string, mixed>
+     */
+    private function analytics(BusinessProfile $businessProfile): array
+    {
+        $start = now()->subDays(13)->startOfDay();
+        $perDay = $businessProfile->views()
+            ->where('viewed_at', '>=', $start)
+            ->pluck('viewed_at')
+            ->countBy(fn ($viewedAt) => \Illuminate\Support\Carbon::parse($viewedAt)->format('Y-m-d'));
+
+        $daily = [];
+
+        for ($offset = 0; $offset < 14; $offset++) {
+            $day = $start->copy()->addDays($offset);
+            $daily[] = [
+                'label' => $day->format('d M'),
+                'count' => (int) ($perDay[$day->format('Y-m-d')] ?? 0),
+            ];
+        }
+
+        return [
+            'total_visitors' => $businessProfile->views()->count(),
+            'last_7_days' => $businessProfile->views()->where('viewed_at', '>=', now()->subDays(7))->count(),
+            'last_30_days' => $businessProfile->views()->where('viewed_at', '>=', now()->subDays(30))->count(),
+            'reviews_count' => $businessProfile->reviews()->where('status', 'visible')->count(),
+            'average_rating' => $businessProfile->reviews()->where('status', 'visible')->avg('rating'),
+            'saved_by' => Favourite::query()->where('business_profile_id', $businessProfile->id)->count(),
+            'listings' => $businessProfile->products()->count(),
+            'available_listings' => $businessProfile->products()->where('is_available', true)->count(),
+            'daily' => $daily,
+        ];
     }
 
     public function create(Request $request): View|RedirectResponse
@@ -219,7 +261,7 @@ class BusinessProfileController extends Controller
 
     private function storeImage(UploadedFile $image, string $directory): string
     {
-        $path = $image->storePublicly($directory, config('filesystems.media_disk'));
+        $path = $this->images->store($image, $directory, str_contains($directory, 'logo') ? 512 : 1600);
 
         if ($path === false) {
             throw new RuntimeException('The business profile image could not be stored.');

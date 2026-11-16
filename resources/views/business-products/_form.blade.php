@@ -56,6 +56,29 @@
             </div>
 
             <div class="md:col-span-2">
+                <label for="gallery" class="mb-2 block text-sm font-medium text-zinc-800 dark:text-zinc-200">More photos <span class="font-normal text-zinc-500">(optional, up to 6 extra, JPG/PNG/WebP up to 4 MB each)</span></label>
+                <input id="gallery" name="gallery[]" type="file" multiple accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" class="block w-full text-sm text-zinc-700 file:me-4 file:rounded-lg file:border-0 file:bg-zinc-100 file:px-4 file:py-2 file:font-medium file:text-zinc-800 dark:text-zinc-300 dark:file:bg-zinc-800 dark:file:text-zinc-100">
+                <p class="mt-2 text-xs text-zinc-500 dark:text-zinc-400">Show your product from different angles. Large phone photos are resized automatically.</p>
+                @error('gallery') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                @error('gallery.*') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                @if ($product && $product->images->isNotEmpty())
+                    <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                        @foreach ($product->images->sortBy('sort_order') as $photo)
+                            <div class="rounded-xl border border-zinc-200 p-2 dark:border-zinc-700">
+                                @if ($photo->url)
+                                    <img src="{{ $photo->url }}" alt="Extra photo {{ $loop->iteration }} of {{ $product->name }}" class="h-28 w-full rounded-lg object-cover" loading="lazy">
+                                @endif
+                                <label class="mt-2 flex items-center gap-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+                                    <input type="checkbox" name="remove_gallery[]" value="{{ $photo->id }}" class="size-4 rounded border-zinc-300 text-red-700">
+                                    Remove this photo
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+
+            <div class="md:col-span-2">
                 <input type="hidden" name="is_available" value="0">
                 <label class="flex items-center gap-2 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                     <input type="checkbox" name="is_available" value="1" @checked(old('is_available', $product?->is_available ?? true)) class="size-4 rounded border-zinc-300 text-emerald-700 focus:ring-emerald-700">
