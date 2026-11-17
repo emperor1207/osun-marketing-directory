@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Storage;
  */
 class BusinessProfile extends Model
 {
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     /** @use HasFactory<BusinessProfileFactory> */
     use HasFactory;
 

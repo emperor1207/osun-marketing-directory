@@ -1,4 +1,4 @@
-
+@
 <?php
 
 use App\Http\Controllers\AdminBusinessReportController;
@@ -145,3 +145,4 @@ Route::prefix('admin')
     });
 
 require __DIR__.'/settings.php';
+
