@@ -1,4 +1,4 @@
-@
+
 <?php
 
 use App\Http\Controllers\AdminBusinessReportController;
@@ -14,8 +14,8 @@ use App\Http\Controllers\CustomerBusinessReportController;
 use App\Http\Controllers\CustomerReviewController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavouriteController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -145,4 +145,3 @@ Route::prefix('admin')
     });
 
 require __DIR__.'/settings.php';
-

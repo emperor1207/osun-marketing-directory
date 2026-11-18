@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -53,7 +54,7 @@ class BusinessProfileController extends Controller
         $perDay = $businessProfile->views()
             ->where('viewed_at', '>=', $start)
             ->pluck('viewed_at')
-            ->countBy(fn ($viewedAt) => \Illuminate\Support\Carbon::parse($viewedAt)->format('Y-m-d'));
+            ->countBy(fn ($viewedAt) => Carbon::parse($viewedAt)->format('Y-m-d'));
 
         $daily = [];
 

@@ -16,11 +16,6 @@ use Illuminate\Support\Facades\Storage;
  */
 class BusinessProfile extends Model
 {
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
-
     /** @use HasFactory<BusinessProfileFactory> */
     use HasFactory;
 
@@ -125,32 +120,6 @@ class BusinessProfile extends Model
     {
         return $this->hasMany(BusinessProfileView::class);
     }
-    /**
-     * @return HasMany<BusinessHour, $this>
-     */
-    public function businessHours(): HasMany
-    {
-        return $this->hasMany(BusinessHour::class);
-    }
-
-    public function isOpenNow(): bool
-    {
-        $now = now('Africa/Lagos');
-        $dayOfWeek = $now->dayOfWeek; // 0 (Sunday) - 6 (Saturday)
-        $currentTime = $now->format('H:i:s');
-
-        $businessHour = $this->businessHours()
-            ->where('day_of_week', $dayOfWeek)
-            ->where('is_closed', false)
-            ->first();
-
-        if (!$businessHour) {
-            return false;
-        }
-
-        return $currentTime >= $businessHour->open_time && $currentTime <= $businessHour->close_time;
-    }
-
 
     private function mediaUrl(?string $path): ?string
     {

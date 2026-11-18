@@ -24,9 +24,9 @@ return new class extends Migration
                 foreach ($users as $user) {
                     $emailPrefix = Str::lower(Str::before($user->email, '@'));
 
-$base = preg_replace('/[^a-z0-9]+/', '-', $emailPrefix) ?? '';
+                    $base = preg_replace('/[^a-z0-9]+/', '-', $emailPrefix) ?? '';
 
-$base = trim(Str::substr($base, 0, 50), '-');
+                    $base = trim(Str::substr($base, 0, 50), '-');
                     $base = Str::length($base) >= 3 ? $base : 'user-'.$user->id;
                     $username = $base;
                     $suffix = '-'.$user->id;

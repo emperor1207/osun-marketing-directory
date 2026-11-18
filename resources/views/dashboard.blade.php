@@ -243,7 +243,7 @@
                     <div class="flex max-w-2xl flex-col gap-3">
                         <p class="text-sm font-semibold uppercase tracking-[0.16em] text-emerald-200">Customer dashboard</p>
                         <h2 id="customer-discovery-heading" class="text-2xl font-bold tracking-tight sm:text-3xl">Discover local businesses across Osun.</h2>
-                        <p class="leading-7 text-emerald-100">Search by business name or start with a category. Browse approved listings and contact businesses directly.</p>
+                        <p class="leading-7 text-emerald-100">Search for a product, a service or a business name, or start with a category. Browse approved listings and contact businesses directly.</p>
                     </div>
                     <div class="flex flex-wrap gap-3">
                         <div class="min-w-32 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
@@ -258,9 +258,9 @@
                 </div>
 
                 <form method="GET" action="{{ route('directory.index') }}" class="relative mt-7 flex flex-col gap-3 rounded-2xl bg-white p-3 shadow-lg sm:flex-row sm:items-center">
-                    <label for="dashboard-search" class="sr-only">Search business names</label>
-                    <input id="dashboard-search" name="search" type="search" maxlength="100" placeholder="Search business names" class="min-h-12 w-full rounded-xl border-0 bg-zinc-50 px-4 text-zinc-950 outline-none ring-1 ring-zinc-200 transition placeholder:text-zinc-500 focus:ring-2 focus:ring-emerald-700">
-                    <button type="submit" class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-amber-300 px-6 font-semibold text-emerald-950 transition hover:bg-amber-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">Search businesses</button>
+                    <label for="dashboard-search" class="sr-only">Search businesses, products or services</label>
+                    <input id="dashboard-search" name="search" type="search" maxlength="100" placeholder="Try &quot;bread&quot;, &quot;hair braiding&quot; or &quot;laptop repair&quot;" class="min-h-12 w-full rounded-xl border-0 bg-zinc-50 px-4 text-zinc-950 outline-none ring-1 ring-zinc-200 transition placeholder:text-zinc-500 focus:ring-2 focus:ring-emerald-700">
+                    <button type="submit" class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-amber-300 px-6 font-semibold text-emerald-950 transition hover:bg-amber-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">Search</button>
                 </form>
                 <a href="{{ route('directory.index') }}" class="relative mt-1 inline-flex min-h-10 w-fit items-center gap-2 font-semibold text-emerald-100 transition hover:text-white focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                     Browse the business directory <span aria-hidden="true">→</span>
@@ -363,7 +363,7 @@
                         <div class="flex flex-col gap-3">
                             @foreach ($recentReviews as $review)
                                 <div class="rounded-xl bg-zinc-50 p-4 dark:bg-zinc-800">
-                                    <a href="{{ route('directory.show', $review->businessProfile) }}" class="font-semibold text-emerald-800 underline dark:text-emerald-300">{{ $review->businessProfile->business_name }}</a>
+                                    <a href="{{ route('directory.show', ['businessProfile' => $review->business_profile_id]) }}" class="font-semibold text-emerald-800 underline dark:text-emerald-300">{{ $review->businessProfile?->business_name ?? 'View business' }}</a>
                                     <p class="mt-1 text-sm text-zinc-700 dark:text-zinc-300">{{ $review->rating }} / 5 · {{ \Illuminate\Support\Str::limit($review->content, 120) }}</p>
                                     <p class="mt-1 text-xs capitalize text-zinc-500 dark:text-zinc-400">Review status: {{ $review->status }}</p>
                                 </div>

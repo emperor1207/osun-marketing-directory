@@ -30,4 +30,3 @@ class BusinessHour extends Model
         return $this->belongsTo(BusinessProfile::class);
     }
 }
-
